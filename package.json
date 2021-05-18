@@ -1,14 +1,14 @@
 {
-  "name": "session-7",
+  "name": "R-ciclo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "pets-seed": "node ./seeds/pets.seed.js",
-    "shelters-seed": "node ./seeds/shelters.seed.js",
-    "all-seeds": "npm run pets-seed && npm run shelters-seed",
+    // "pets-seed": "node ./seeds/pets.seed.js",
+    // "shelters-seed": "node ./seeds/shelters.seed.js",
+    // "all-seeds": "npm run pets-seed && npm run shelters-seed",
     "deploy": "git push heroku master"
   },
   "author": "Juan Macías - Upgrade Hub®",
