@@ -4,9 +4,9 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
     {
-        username: { type: String, required: true }, // juan
-        email: { type: String, required: true }, // juan@macias.com
-        password: { type: String, required: true }, // 1234asd
+        username: { type: String, required: true }, 
+        email: { type: String, required: true },
+        password: { type: String, required: true }, 
         role: { type: String, required: true, enum: ['admin', 'user'], default: 'user'},
         donations: { type:mongoose.Types.ObjectId, ref: 'Donation' },
         contributions: { type:mongoose.Types.ObjectId, ref: 'Contribution' },
