@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Pet</title>
+    <style>
+        a {
+            margin-right: 16px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Ir a Inicio</a>
+        <a href="/pets">Ir a Pets</a>
+    </nav>
+    <form action="/pets/create" method="POST" enctype="multipart/form-data">
+        {{!-- const { name, age, color, breed, weight, pedegree, specie } = req.body; --}}
+        <div>
+            <label>
+                Nombre
+                <input type="text" name="name" placeholder="Nombre">
+            </label>
+        </div>
+
+        <div>
+            <label>
+                Edad
+                <input type="number" name="age" placeholder="Edad">
+            </label>
+        </div>
+
+        <div>
+            <label>
+                Color
+                <input type="text" name="color" placeholder="Color">
+            </label>
+        </div>
+
+        <div>
+            <label>
+                Breed
+                <input type="text" name="breed" placeholder="Breed">
+            </label>
+        </div>
+
+        <div>
+            <label>
+                Weight
+                <input type="number" name="weight" placeholder="Weight">
+            </label>
+        </div>
+
+        <div>
+            <label>
+                Pedegree
+                <input type="text" name="pedegree" placeholder="Pedegree">
+            </label>
+        </div>
+
+        <div>
+            <label>
+                Specie
+                <input type="text" name="specie" placeholder="Specie">
+            </label>
+        </div>
+
+        <div>
+            <label>
+                Imagen
+                <input type="file" name="image">
+            </label>
+        </div>
+
+
+        <input type="submit" value="CREAR MASCOTA">
+    </form>
+</body>
+</html>
