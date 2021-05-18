@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Donation = require('../models/Donation.model');
+const Organization = require('../models/Organization.model');
 const { DB_URL, DB_CONFIG } = require('../db');
 
 
@@ -17,8 +18,8 @@ const donationsArray = [
         },          
         organization: null
     },
-    {},         //HACER: meter más donaciones
-    {}
+    // {},         //HACER: meter más donaciones
+    // {}
 ];
 
 
@@ -39,15 +40,18 @@ mongoose.connect(DB_URL, DB_CONFIG)
     })
     .then(async () => {
 
-        const allOrganizations = Donation.find();
-        donationsArray[0].types = [allOrganizations[0].type, allOrganizations[1].type];
+        const allOrganizations = await Organization.find();
+        donationsArray[0].types = [
+            allOrganizations[0]._id
+            // , allOrganizations[0].type
+        ];
 
         await Donation.insertMany(donationsArray);
-        console.log('Añadidos nuevas Causes a DB');
+        console.log('Añadidos nuevas Donations a DB');
     })
     .catch((error) => {
 
-        console.log('Error insertando Cause', error)
+        console.log('Error insertando Donations', error)
     })
     .finally(() => {
 

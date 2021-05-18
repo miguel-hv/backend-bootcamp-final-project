@@ -10,8 +10,8 @@ const organizationsArray = [
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_iyAGVjAVPULa5Yl0Oq_WzNz6JY9ODb4dZgEo84zrhBT_izCrZh_me3zBHHkxngtj4zE&usqp=CAU', 
         type: 'Hospital',   
     },
-    {},         //HACER: meter más organizaciones
-    {}
+    // {},         //HACER: meter más organizaciones
+    // {}
 ];
 
 

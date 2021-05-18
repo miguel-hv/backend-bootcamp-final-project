@@ -12,8 +12,8 @@ const causesArray = [
         info: 'url externa o string',   //HACER url o string JUAN
         types: [],   
     },
-    {},         //HACER: meter más causas
-    {}
+    // {},         //HACER: meter más causas
+    // {}
 ];
 
 
@@ -34,14 +34,17 @@ mongoose.connect(DB_URL, DB_CONFIG)
     })
     .then(async () => {
 
-        const allOrganizations = Cause.find();
-        causesArray[0].types = [allOrganizations[0].type, allOrganizations[1].type];
+        const allOrganizations = await Organization.find();
+        causesArray[0].types = [
+            allOrganizations[0]._id         //HACER: usar type en vez de _id (ver abajo) 
+            // ,allOrganizations[0].type    
+        ];
 
         // causesArray[0].types = [allTypes[0]._id, allTypes[1]._id];
         // causesArray[1].types = [allTypes[2]._id, allTypes[3]._id];
 
-
         await Cause.insertMany(causesArray);
+        // await Cause.populate(causesArray);       //HACER: cambiar insertMany por otro método para campos no id
         console.log('Añadidos nuevas Causes a DB');
     })
     .catch((error) => {

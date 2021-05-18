@@ -9,8 +9,8 @@ const usersArray = [
         email: 'semilla@girasol.com',
         password: '1234asd',            //TAREA: revisar password con requisitos entrada front
         role: 'user',
-        donations: '',
-        contributions: '',
+        donations: null,
+        contributions: null,
         address: { 
             street: 'Alvargonzález',
             postalCode: '33538', 
