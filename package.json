@@ -6,9 +6,6 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    // "pets-seed": "node ./seeds/pets.seed.js",
-    // "shelters-seed": "node ./seeds/shelters.seed.js",
-    // "all-seeds": "npm run pets-seed && npm run shelters-seed",
     "deploy": "git push heroku master"
   },
   "author": "Juan Macías - Upgrade Hub®",
