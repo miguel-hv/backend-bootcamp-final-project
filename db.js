@@ -12,7 +12,11 @@ const connect = () => {
             const { name, host } = res.connection;
     
             console.log(`Conectado con éxito a ${name} - ${host}`);
+        })
+        .catch(error => {
+            console.log('Error conectando a la DB', error);
         });
+
 };
 
 
