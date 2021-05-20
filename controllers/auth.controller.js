@@ -1,3 +1,4 @@
+const { Passport } = require("passport");
 const passport = require("passport");
 const User = require('../models/User.model');
 
@@ -12,6 +13,34 @@ module.exports = {
       } else {
         return res.status(401).json({message: 'Usuario no encontrado'});
       }
+  },
+  
+  registerPost: (req, res, next) => {
+      console.log('Llega la petición');
+      const { name, email,password } = req.body;
+
+      if (!name || !email || !password) {
+        return res.status(400).json({ message: 'Completa todos los campos' });
+      }
+
+      passport.authenticate("register", (error, user)  => {
+        if (error){
+          return res.status(403).json({message: error.message});
+        }
+        req.logIn(user, (error)  => {
+          if (error) {
+            return res.status(403).json({message: error.message});
+          };
+
+          let userRegister = user;
+          userRegister.password = null;
+
+          return res.json(userRegister);
+
+        });
+
+      })(req, res, next);
+
   },
 
   loginPost: (req, res, next) => {

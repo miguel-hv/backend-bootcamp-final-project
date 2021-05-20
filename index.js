@@ -3,10 +3,12 @@ const path = require("path");
 const session = require ("express-session");
 const passport = require ("passport");
 const db = require("./db.js");
-//require("./authentication");
+
 
 
 db.connect();
+
+const PORT = 3000;
 
 const indexRoutes = require("./routes/index.routes");
 const authRoutes = require("./routes/auth.routes");
@@ -36,10 +38,10 @@ server.use(express.urlencoded({ extended: true }));
 
 
 server.use("/", indexRoutes);
-//server.use("/auth", authRoutes);
+server.use("/auth", authRoutes);
 
 server.use("*", (req, res) => {
-    const error = new Error("Ruta no encontrada, aqui no hay nada que recilcar");
+    const error = new Error("Ruta no encontrada, aqui no hay nada que reciclar");
     error.status = 404;
     return res.status(404).json(error.message);
 });
@@ -49,18 +51,6 @@ server.use((error, req, res, next) => {
     const errorStatus = error.status || 500;
     const errorMessage = error.message || "Unexpected Error";
     return res.status(errorStatus).json(errorMessage);
-});
-
-
-server.use('*', (req, res, next) => {
-    const error = new Error('Route not found');
-    error.status = 404;
-    next(error);
-  });
-
-server.use((err, req, res, next) => {
-console.log(err);
-return res.status(err.status || 500).json(err);
 });
 
 server.listen(PORT, () => {

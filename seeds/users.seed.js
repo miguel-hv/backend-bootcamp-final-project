@@ -33,10 +33,10 @@ mongoose.connect(DB_URL, DB_CONFIG)
         console.log('Ejecutando seed User.js');
 
         
-        const hash = await bcrypt.hash(password, saltRounds);
+        //const hash = await bcrypt.hash(password, saltRounds);
 
         const allUsers = await User.find();
-        const allPasswords = [...allUsers.password];
+        //const allPasswords = [...allUsers.password];
         
         console.log(allPasswords);
 

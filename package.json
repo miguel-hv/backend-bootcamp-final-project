@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "causes": "node ./seeds/causes.seed.js",
+    "pickups": "node ./seeds/pickups.seed.js",
+    "users": "node ./seeds/users.seed.js"
+
   },
   "author": "Juan Macías - Upgrade Hub®",
   "license": "ISC",
