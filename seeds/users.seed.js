@@ -7,7 +7,7 @@ const { DB_URL, DB_CONFIG } = require('../db');
 
 const usersArray = [
     {
-        username: 'Semilla', 
+        name: 'Semilla', 
         email: 'semilla@girasol.com',
         password: '1234asd',            //TAREA: revisar password con requisitos entrada front
         role: 'user',
@@ -37,9 +37,7 @@ mongoose.connect(DB_URL, DB_CONFIG)
 
         const allUsers = await User.find();
         //const allPasswords = [...allUsers.password];
-        
-        console.log(allPasswords);
-
+       
         if(allUsers.length) {
             
             await User.collection.drop();

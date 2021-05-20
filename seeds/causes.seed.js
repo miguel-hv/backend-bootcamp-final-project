@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Cause = require('../models/Cause.model');
-const Organization = require('../models/Organization.model');
 const { DB_URL, DB_CONFIG } = require('../db');
 
 
