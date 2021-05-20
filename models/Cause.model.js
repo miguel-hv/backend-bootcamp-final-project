@@ -8,7 +8,8 @@ const causeSchema = new Schema(
         description: { type: String, required: true },
         image: { type: String, required: true }, 
         info: { type: String, required: true },  
-        types: { type:mongoose.Types.ObjectId, ref: 'Organization' },    //HACER: linkar solo el campo type de orgs 
+        raised:  { type: Number, required: true },
+        goal:  { type: String, required: true },
     },
     { timestamps: true }
 );

@@ -7,7 +7,7 @@ const { DB_URL, DB_CONFIG } = require('../db');
 
 const usersArray = [
     {
-        username: 'Semilla', 
+        name: 'Semilla', 
         email: 'semilla@girasol.com',
         password: '1234asd',            //TAREA: revisar password con requisitos entrada front
         role: 'user',
@@ -32,16 +32,9 @@ mongoose.connect(DB_URL, DB_CONFIG)
     .then(async () => {
         console.log('Ejecutando seed User.js');
 
-        
-        //const hash = await bcrypt.hash(password, saltRounds);
-
         const allUsers = await User.find();
-        //const allPasswords = [...allUsers.password];
-        
-        console.log(allPasswords);
 
         if(allUsers.length) {
-            
             await User.collection.drop();
             console.log('Colección Users eliminada con éxito');
         }
