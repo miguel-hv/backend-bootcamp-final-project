@@ -13,9 +13,10 @@ const validateEmail = (email) => {
 const validatePass = (password) => {
     const re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
     return re.test(String(password));
+    
 };
-
 const registerStrategy = new LocalStrategy(
+    
     {
         usernameField: 'email',
         passwordField: 'password',
@@ -65,4 +66,5 @@ const registerStrategy = new LocalStrategy(
         }
     }
 );
+
 module.exports = registerStrategy;

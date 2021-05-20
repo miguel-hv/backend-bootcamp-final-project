@@ -33,7 +33,6 @@ mongoose.connect(DB_URL, DB_CONFIG)
         console.log('Ejecutando seed User.js');
 
         const allUsers = await User.find();
-
         if(allUsers.length) {
             await User.collection.drop();
             console.log('Colección Users eliminada con éxito');

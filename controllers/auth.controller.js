@@ -1,5 +1,7 @@
 const passport = require("passport");
-const User = require('../models/User.model');
+const LocalStrategy = require("passport-local").Strategy;
+//const User = require('../models/User.model');
+
 
 
 module.exports = {
@@ -21,8 +23,10 @@ module.exports = {
       if (!name || !email || !password) {
         return res.status(400).json({ message: 'Completa todos los campos' });
       }
+      console.log("request lleva esto en el body", req.body);
 
       passport.authenticate("register", (error, user)  => {
+        console.log("dentro de authenticate");
         if (error){
           return res.status(403).json({message: error.message});
         }

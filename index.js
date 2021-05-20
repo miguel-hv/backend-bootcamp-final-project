@@ -5,6 +5,8 @@ const passport = require ("passport");
 const db = require("./db.js");
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
+require("./authentication");
+
 
 
 db.connect();
@@ -16,7 +18,6 @@ const authRoutes = require("./routes/auth.routes");
 
 const server = express();
 
-require("./authentication");
 
 
 server.use(express.json());
