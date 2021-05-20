@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const User = require('../models/User.model');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const { DB_URL, DB_CONFIG } = require('../db');
 
 
@@ -30,9 +32,16 @@ mongoose.connect(DB_URL, DB_CONFIG)
     .then(async () => {
         console.log('Ejecutando seed User.js');
 
+        
+        const hash = await bcrypt.hash(password, saltRounds);
+
         const allUsers = await User.find();
+        const allPasswords = [...allUsers.password];
+        
+        console.log(allPasswords);
 
         if(allUsers.length) {
+            
             await User.collection.drop();
             console.log('Colección Users eliminada con éxito');
         }

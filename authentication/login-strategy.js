@@ -29,7 +29,7 @@ const loginStrategy = new LocalStrategy(
             const isValidPassword = await bcrypt.compare(password, existingUser.password);
 
             if(!isValidPassword) {
-                const error = new Error('Password is invalid');
+                const error = new Error("Contraseña errónea.");
                 return done(error);
             }
  
