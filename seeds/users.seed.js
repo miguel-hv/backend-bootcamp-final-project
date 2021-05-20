@@ -18,12 +18,6 @@ const usersArray = [
             postalCode: '33538', 
             city: 'Gijón', 
                 },
-        card: {
-            number: '123456789', //TAREA: revisar password con requisitos entrada front
-            dateM: '05',
-            dateA: '2023',
-            CVV: '558',
-        },
     }
 ];
 
