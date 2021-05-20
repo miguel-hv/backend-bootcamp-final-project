@@ -1,63 +1,56 @@
 const express = require ('express');
-const passport = require("passport");
-const mongoose = require('mongoose');
-const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
-
-
-const authRoutes = require("./routes/auth.routes");
-
+const path = require("path");
+const session = require ("express-session");
+const passport = require ("passport");
 const db = require("./db.js");
+//require("./authentication");
 
-require("./authentication");
 
 db.connect();
 
-const PORT = 3000;
+const indexRoutes = require("./routes/index.routes");
+const authRoutes = require("./routes/auth.routes");
+
 const server = express();
-const router = express.Router();
 
 server.use(
     session({
-      secret: '1As1.!+??ASzxcj12"!.as',
-      resave: false,
-      saveUninitialized: false,
-      cookie: {
-        maxAge: 36000000,
-        httpOnly: false,
-        secure: false,
-        sameSite: false,
-      },
-      store: new MongoStore({ mongooseConnection: mongoose.connection }),
+        secret: '3qu1pAz0!+R3cl1cLad0r',
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            maxAge: 15 * 24 * 60 * 60 * 1000,
+        },
+        
     })
-  );
-  
-  
+);
 
 server.use(passport.initialize());
+
 server.use(passport.session());
 
-
 server.use(express.json());
-// server.use(express.urlencoded({ extended: true }));
+
+server.use(express.urlencoded({ extended: true }));
 
 
-router.get('/', (req, res) =>{
 
-    console.log('Pidiendo cosas al servidor');
-    res.send('Ruta de pedidos a home');
+server.use("/", indexRoutes);
+//server.use("/auth", authRoutes);
+
+server.use("*", (req, res) => {
+    const error = new Error("Ruta no encontrada, aqui no hay nada que recilcar");
+    error.status = 404;
+    return res.status(404).json(error.message);
 });
 
-router.get('/auth/login', (req, res) =>{
-
-    console.log('ruta login');
-    res.send('Ruta formulario login');
+server.use((error, req, res, next) => {
+    console.log("Error handler", error);
+    const errorStatus = error.status || 500;
+    const errorMessage = error.message || "Unexpected Error";
+    return res.status(errorStatus).json(errorMessage);
 });
 
-
-server.use('/auth', authRoutes);
-
-server.use('/', router);
 
 server.use('*', (req, res, next) => {
     const error = new Error('Route not found');

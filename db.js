@@ -14,7 +14,7 @@ const connect = () => {
             console.log(`Conectado con éxito a ${name} - ${host}`);
         })
         .catch(error => {
-            console.log('Error conectando a la DB', error);
+            console.log('Error conectando a la base de datos', error);
         });
 
 };
