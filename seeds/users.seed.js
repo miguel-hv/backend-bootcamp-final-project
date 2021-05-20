@@ -18,12 +18,6 @@ const usersArray = [
             postalCode: '33538', 
             city: 'Gijón', 
                 },
-        card: {
-            number: '123456789', //TAREA: revisar password con requisitos entrada front
-            dateM: '05',
-            dateA: '2023',
-            CVV: '558',
-        },
     }
 ];
 
@@ -32,14 +26,8 @@ mongoose.connect(DB_URL, DB_CONFIG)
     .then(async () => {
         console.log('Ejecutando seed User.js');
 
-        
-        //const hash = await bcrypt.hash(password, saltRounds);
-
         const allUsers = await User.find();
-        //const allPasswords = [...allUsers.password];
-       
         if(allUsers.length) {
-            
             await User.collection.drop();
             console.log('Colección Users eliminada con éxito');
         }

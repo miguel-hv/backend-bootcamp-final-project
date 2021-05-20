@@ -3,6 +3,8 @@ const path = require("path");
 const session = require ("express-session");
 const passport = require ("passport");
 const db = require("./db.js");
+const MongoStore = require('connect-mongo')(session);
+const mongoose = require('mongoose');
 require("./authentication");
 
 
@@ -16,6 +18,14 @@ const authRoutes = require("./routes/auth.routes");
 
 const server = express();
 
+
+
+server.use(express.json());
+
+server.use(express.urlencoded({ extended: true }));
+
+server.use(express.static(path.join(__dirname, 'public')));
+
 server.use(
     session({
         secret: '3qu1pAz0!+R3cl1cLad0r',
@@ -24,19 +34,13 @@ server.use(
         cookie: {
             maxAge: 15 * 24 * 60 * 60 * 1000,
         },
-        
+        store: new MongoStore({ mongooseConnection: mongoose.connection }),
     })
 );
 
 server.use(passport.initialize());
 
 server.use(passport.session());
-
-server.use(express.json());
-
-server.use(express.urlencoded({ extended: true }));
-
-
 
 server.use("/", indexRoutes);
 server.use("/auth", authRoutes);
