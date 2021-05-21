@@ -2,6 +2,7 @@ const express = require ('express');
 const path = require("path");
 const session = require ("express-session");
 const passport = require ("passport");
+const cors = require('cors');
 const db = require("./db.js");
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
@@ -18,6 +19,18 @@ const authRoutes = require("./routes/auth.routes");
 
 const server = express();
 
+server.use((req, res, next) => {
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+  });
+  
+  server.use(cors({
+    origin: ['http://localhost:3000', 'https://react-auth-upgrade.netlify.app'],
+    credentials: true,
+  }));
+  
 
 
 server.use(express.json());
@@ -33,6 +46,10 @@ server.use(
         saveUninitialized: false,
         cookie: {
             maxAge: 15 * 24 * 60 * 60 * 1000,
+            httpOnly: false,
+            secure: false,
+            sameSite: false,
+
         },
         store: new MongoStore({ mongooseConnection: mongoose.connection }),
     })
