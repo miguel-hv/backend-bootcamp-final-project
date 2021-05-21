@@ -11,7 +11,7 @@ require("./authentication");
 
 db.connect();
 
-const PORT = 3000;
+const PORT = 3500;
 
 const indexRoutes = require("./routes/index.routes");
 const authRoutes = require("./routes/auth.routes");
