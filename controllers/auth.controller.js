@@ -28,7 +28,7 @@ module.exports = {
       passport.authenticate("register", (error, user)  => {
         console.log("dentro de authenticate");
         if (error){
-          return res.status(403).json({message: error.message});
+          return next(error);
         }
         req.logIn(user, (error)  => {
           if (error) {

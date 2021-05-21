@@ -52,10 +52,15 @@ const registerStrategy = new LocalStrategy(
                name: req.body.name,
                email: email,
                password: hash,
-               //address:
-               //card:
+               address:[{
+                   street: req.body.street,
+                   postalCode: req.body.postalCode,
+                   city: req.body.city,
 
-            });
+               }],
+            });   
+
+            
 
             const savedUser = await newUser.save();
 
