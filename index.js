@@ -16,6 +16,7 @@ const PORT = 3500;
 
 const indexRoutes = require("./routes/index.routes");
 const authRoutes = require("./routes/auth.routes");
+const causeRoutes = require("./routes/cause.routes");
 
 const server = express();
 
@@ -61,6 +62,8 @@ server.use(passport.session());
 
 server.use("/", indexRoutes);
 server.use("/auth", authRoutes);
+server.use("/cause", causeRoutes);
+
 
 server.use("*", (req, res) => {
     const error = new Error("Ruta no encontrada, aqui no hay nada que reciclar");
