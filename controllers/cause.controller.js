@@ -10,18 +10,9 @@ module.exports = {
             console.log(req.body);
             let { donation } = req.body;
             console.log('donation recibida en controller:'+donation);
-            donation = 999;
 
-            //  const newPet = new Pet({ name, age, color, breed, weight, pedegree, specie, image });
-            // const actualDonations = await Cause.updateOne({ name: cause },{ $inc: { raised: donation }}); 
-            const actualDonations = await Cause.updateOne({ name: "Incendios en Australia" },{ $inc: { raised: donation }}); 
-            console.log('donaciones cause: '+ actualDonations);
-            // const newDonations = actualDonations + donation;
-            // console.log('suma donaciones cause: '+ newDonations);
-
-            // const createdPet = await newPet.save();
-            
-            // await Cause.findOneAndUpdate();
+            await Cause.updateOne({ name: "Incendios en Australia" },{ $inc: { raised: donation }}); 
+        
             
     
             return res.status(201).json('causeDonation completed');
