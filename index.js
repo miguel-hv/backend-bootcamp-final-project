@@ -62,7 +62,7 @@ server.use(passport.session());
 
 server.use("/", indexRoutes);
 server.use("/auth", authRoutes);
-server.use("/cause", causeRoutes);
+server.use("/causes", causeRoutes);
 
 
 server.use("*", (req, res) => {
