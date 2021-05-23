@@ -52,6 +52,7 @@ const registerStrategy = new LocalStrategy(
                name: req.body.name,
                email: email,
                password: hash,
+               image: req.body.image,
                address:[{
                    street: req.body.street,
                    postalCode: req.body.postalCode,
