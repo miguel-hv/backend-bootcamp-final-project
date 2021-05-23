@@ -10,7 +10,7 @@ const loginStrategy = new LocalStrategy(
     },
     async (req, email, password, done) => {
         try {
-            // const validEmail = validate(email); //HACER: validar email
+            // const validEmail = validate(email); 
             
             // if (!validEmail) {
             //     const error = new Error("Invalid Email");
