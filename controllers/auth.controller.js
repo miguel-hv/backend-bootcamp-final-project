@@ -64,4 +64,19 @@ module.exports = {
     })(req, res, next);
   },
 
+  logoutPost: (req, res, next) => {
+    if (req.user) {
+      req.logout();
+
+      req.session.destroy(() => {
+        res.clearCookie("connect.sid");
+
+        return res.status(200).json({ message: 'Logout correcto' });
+      });
+    } else {
+      return res.status(401).json({ message: 'Unexpected error' });
+    }
+  },
+
+
 };
