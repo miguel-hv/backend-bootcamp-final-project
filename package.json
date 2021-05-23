@@ -6,9 +6,10 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "causes": "node ./seeds/causes.seed.js",
-    "pickups": "node ./seeds/pickups.seed.js",
-    "users": "node ./seeds/users.seed.js"
+    "causes-seed": "node ./seeds/causes.seed.js",
+    "pickups-seed": "node ./seeds/pickups.seed.js",
+    "users-seed": "node ./seeds/users.seed.js",
+    "all-seeds": "npm run causes-seed && npm run pickups-seed && npm run users-seed"
   },
   "author": "Juan Macías - Upgrade Hub®",
   "license": "ISC",
@@ -19,9 +20,9 @@
     "cors": "^2.8.5",
     "dotenv": "^8.6.0",
     "express": "^4.17.1",
-    "express-session": "^1.17.1",
+    "express-session": "^1.17.2",
     "hbs": "^4.1.2",
-    "mongoose": "^5.12.5",
+    "mongoose": "^5.12.10",
     "multer": "^1.4.2",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
