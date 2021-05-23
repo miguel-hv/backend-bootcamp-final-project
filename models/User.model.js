@@ -13,9 +13,9 @@ const userSchema = new Schema(
         donations: [{ type:mongoose.Types.ObjectId, ref: 'Donation' }],
         contributions: [{ type:mongoose.Types.ObjectId, ref: 'Contribution' }, {type: Number}],
         address: [{ 
-            street: {type: String, required: true},
-            postalCode: {type: String, required: true}, 
-            city: {type: String, required: true}, 
+            street: {type: String},
+            postalCode: {type: String}, 
+            city: {type: String}, 
                 }],
     },
     { timestamps: true }
