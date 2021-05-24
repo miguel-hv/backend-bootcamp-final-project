@@ -12,8 +12,15 @@ const causesArray = [
         raised: 5,   
         goal: '2000',
     },
-    // {},         //HACER: meter más causas
-    // {}
+    { 
+        name: 'Deforestación en Tailandia', 
+        description: 'Tailandia desforestada: una catástrofe para la salud, la economía y la biodiversidad',
+        image: 'https://w6r8k4w6.rocketcdn.me/wp-content/uploads/2019/01/selva-tailandia.jpg', 
+        info: 'url externa o string',   //HACER url o string JUAN
+        raised: 5,   
+        goal: '7000',
+    },        
+    //{}
 ];
 
 
